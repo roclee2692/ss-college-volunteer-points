@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.30.0",
+  "appid": " touristappid",    "//": "注释内容//填写你的小程序 AppID ",
+  "projectname": "善水书院积分系统"
+}
