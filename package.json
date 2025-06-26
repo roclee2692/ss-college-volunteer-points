@@ -1,0 +1,16 @@
+{
+  "name": "ss-college-volunteer-points",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "miniprogram-simulate": "^1.6.1"
+  }
+}
