@@ -1,0 +1,4 @@
+<view class="container">
+  <text class="title">善水书院积分系统</text>
+  <button bindtap="handleStart">开始使用</button>
+</view>

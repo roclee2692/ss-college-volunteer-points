@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home"
+  ],
+  "window": {
+    "navigationBarTitleText": "善水书院积分系统"
+  }
+}
