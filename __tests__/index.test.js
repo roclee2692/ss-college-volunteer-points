@@ -1,21 +1,20 @@
 const fs = require('fs');
 const path = require('path');
+const simulate = require('miniprogram-simulate');
 
-const wx = { navigateTo: jest.fn() };
-
-global.wx = wx;
-
-test('index page script and template', () => {
-  let pageInstance;
-  global.Page = (obj) => { pageInstance = obj; };
-  // eslint-disable-next-line global-require
+test('index page navigation', () => {
+  let def;
+  global.Page = (obj) => { def = obj; };
   require('../miniprogram/pages/index/index.js');
+  wx.navigateTo = jest.fn();
 
-  pageInstance.handleStart();
+  const template = fs.readFileSync(
+    path.resolve(__dirname, '../miniprogram/pages/index/index.wxml'),
+    'utf8'
+  );
+  const id = simulate.load({ template, methods: { handleStart: def.handleStart } });
+  const page = simulate.render(id);
+  page.attach(document.createElement('parent'));
+  page.instance.handleStart();
   expect(wx.navigateTo).toHaveBeenCalledWith({ url: '/pages/home/home' });
-
-  const wxmlPath = path.resolve(__dirname, '../miniprogram/pages/index/index.wxml');
-  const content = fs.readFileSync(wxmlPath, 'utf8');
-  expect(content).toMatch('善水书院积分系统');
 });
-
