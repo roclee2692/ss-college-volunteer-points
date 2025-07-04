@@ -1,0 +1,16 @@
+{
+  "extends": ["airbnb-base"],
+  "env": {
+    "es6": true,
+    "jest": true,
+    "browser": true
+  },
+  "globals": {
+    "wx": true,
+    "App": true,
+    "Page": true,
+    "getApp": true,
+    "Component": true
+  },
+  "rules": {}
+}
