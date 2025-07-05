@@ -1,0 +1,13 @@
+<form bindsubmit="handleSubmit">
+  <radio-group bindchange="handleTypeChange">
+    <label>
+      <radio value="labor" checked="{{type==='labor'}}"/>劳动
+    </label>
+    <label>
+      <radio value="volunteer" checked="{{type==='volunteer'}}"/>志愿
+    </label>
+  </radio-group>
+  <input type="number" bindinput="handleMinutesChange" value="{{minutes}}" placeholder="时长(分钟)" />
+  <textarea bindinput="handleRemarkChange" value="{{remark}}" placeholder="备注" />
+  <button formType="submit">提交</button>
+</form>
