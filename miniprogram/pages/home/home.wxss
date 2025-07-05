@@ -2,3 +2,11 @@
   padding: 40rpx;
   text-align: center;
 }
+
+.btn-wrap {
+  margin-top: 30rpx;
+}
+
+van-button + van-button {
+  margin-top: 20rpx;
+}

@@ -1,0 +1,1 @@
+<view class="van-card"><slot/></view>

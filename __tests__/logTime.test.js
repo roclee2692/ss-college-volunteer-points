@@ -1,4 +1,5 @@
 const simulate = require('miniprogram-simulate');
+const { LOG_TYPES } = require('../cloudfunctions/common/constants');
 
 let def;
 let originalPage;
@@ -36,7 +37,7 @@ test('addLog called on submit', async () => {
   wx.redirectTo = jest.fn();
 
   const page = await loadPage();
-  page.instance.handleTypeChange({ detail: { value: 'volunteer' } });
+  page.instance.handleTypeChange({ detail: { value: LOG_TYPES.VOLUNTEER } });
   page.instance.handleMinutesChange({ detail: { value: '30' } });
   page.instance.handleRemarkChange({ detail: { value: 'remark' } });
 
@@ -44,6 +45,6 @@ test('addLog called on submit', async () => {
 
   expect(wx.cloud.callFunction).toHaveBeenCalledWith({
     name: 'addLog',
-    data: { type: 'volunteer', minutes: 30, remark: 'remark' },
+    data: { type: LOG_TYPES.VOLUNTEER, minutes: 30, remark: 'remark' },
   });
 });
