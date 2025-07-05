@@ -2,12 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const simulate = require('miniprogram-simulate');
 
-let def;
-global.Page = (obj) => { def = obj; };
-require('../miniprogram/pages/index/index');
-global.Page = () => {};
-require('../miniprogram/pages/home/home');
-
 test('index page navigation', () => {
   wx.navigateTo = jest.fn();
 
