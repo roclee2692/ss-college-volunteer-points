@@ -2,10 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const simulate = require('miniprogram-simulate');
 
-let def;
-global.Page = (obj) => { def = obj; };
-require('../miniprogram/pages/index/index');
-
 test('index page navigation', () => {
   let def;
   global.Page = (obj) => { def = obj; };
