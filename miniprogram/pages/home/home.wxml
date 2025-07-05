@@ -1,4 +1,5 @@
 <view class="container">
+
   <van-card>欢迎使用善水书院积分系统</van-card>
   <view class="btn-wrap">
     <van-button type="primary" block bindtap="goProfile">个人信息</van-button>
