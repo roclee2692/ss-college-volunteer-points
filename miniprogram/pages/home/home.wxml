@@ -1,6 +1,8 @@
 <view class="container">
-  <van-cell-group>
-    <van-cell title="个人信息" is-link bindtap="goProfile" />
-    <van-cell title="时长提交" is-link bindtap="goLogTime" />
-  </van-cell-group>
+
+  <van-card>欢迎使用善水书院积分系统</van-card>
+  <view class="btn-wrap">
+    <van-button type="primary" block bindtap="goProfile">个人信息</van-button>
+    <van-button type="info" block bindtap="goLogTime">时长提交</van-button>
+  </view>
 </view>

@@ -1,5 +1,5 @@
 <form bindsubmit="handleSubmit">
-  <radio-group bindchange="handleTypeChange">
+  <radio-group bindchange="handleTypeChange" class="type-group">
     <label>
       <radio value="labor" checked="{{type==='labor'}}"/>劳动
     </label>
@@ -7,7 +7,9 @@
       <radio value="volunteer" checked="{{type==='volunteer'}}"/>志愿
     </label>
   </radio-group>
-  <input type="number" bindinput="handleMinutesChange" value="{{minutes}}" placeholder="时长(分钟)" />
-  <textarea bindinput="handleRemarkChange" value="{{remark}}" placeholder="备注" />
-  <button formType="submit">提交</button>
+  <van-field type="number" placeholder="时长(分钟)" bind:input="handleMinutesChange" value="{{minutes}}" />
+  <van-field placeholder="备注" bind:input="handleRemarkChange" value="{{remark}}" />
+  <view class="btn-wrap">
+    <van-button type="info" block formType="submit">提交</van-button>
+  </view>
 </form>
