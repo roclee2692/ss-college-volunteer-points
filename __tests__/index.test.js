@@ -1,19 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 const simulate = require('miniprogram-simulate');
+const exparser = require('miniprogram-exparser');
 
-test('index page navigation', () => {
-  const originalPage = global.Page;
-  let def;
+let def;
+
+beforeAll(() => {
   global.Page = (obj) => { def = obj; };
-  // eslint-disable-next-line global-require
   require('../miniprogram/pages/index/index');
-
   global.Page = () => {};
-  // eslint-disable-next-line global-require
   require('../miniprogram/pages/home/home');
+});
 
-  const originalNavigate = wx.navigateTo;
+afterAll(() => {
+  global.Page = undefined;
+});
+
+test('index page navigation', async () => {
+
   wx.navigateTo = jest.fn();
 
   const template = fs.readFileSync(
@@ -23,7 +27,10 @@ test('index page navigation', () => {
   const id = simulate.load({ template, methods: { handleStart: def.handleStart } });
   const page = simulate.render(id);
   page.attach(document.createElement('parent'));
-  page.instance.handleStart();
+
+  const button = page.dom.querySelector('wx-button');
+  exparser.triggerEvent(button.__wxElement, 'tap');
+  await simulate.sleep(0);
 
   expect(wx.navigateTo).toHaveBeenCalledWith({ url: '/pages/home/home' });
 
