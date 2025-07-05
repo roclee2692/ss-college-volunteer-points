@@ -6,6 +6,7 @@ let originalPage;
 beforeAll(() => {
   originalPage = global.Page;
   global.Page = (obj) => { def = obj; };
+  // eslint-disable-next-line global-require
   require('../miniprogram/pages/log-time/log-time');
 });
 

@@ -8,7 +8,7 @@ const logs = db.collection('Logs');
 const users = db.collection('Users');
 const _ = db.command;
 
-exports.main = async (event, context) => {
+exports.main = async (event) => {
   const { OPENID } = cloud.getWXContext();
   if (!ADMIN_OPENIDS.includes(OPENID)) {
     throw new Error('unauthorized');
