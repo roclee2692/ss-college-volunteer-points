@@ -5,12 +5,10 @@ const simulate = require('miniprogram-simulate');
 let def;
 global.Page = (obj) => { def = obj; };
 require('../miniprogram/pages/index/index');
+global.Page = () => {};
+require('../miniprogram/pages/home/home');
 
 test('index page navigation', () => {
-  let def;
-  global.Page = (obj) => { def = obj; };
-  // eslint-disable-next-line global-require
-  require('../miniprogram/pages/index/index');
   wx.navigateTo = jest.fn();
 
   const template = fs.readFileSync(
