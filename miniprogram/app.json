@@ -5,7 +5,8 @@
     "pages/profile/profile",
     "pages/log-time/log-time",
     "pages/admin/audit/audit",
-    "pages/admin/stats/stats"
+    "pages/admin/stats/stats",
+    "pages/history/history"
   ],
   "window": {
     "navigationBarTitleText": "善水书院积分系统"
