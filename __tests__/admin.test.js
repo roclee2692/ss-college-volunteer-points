@@ -7,8 +7,10 @@ let originalPage;
 beforeAll(() => {
   originalPage = global.Page;
   global.Page = (obj) => { auditDef = obj; };
+  // eslint-disable-next-line global-require
   require('../miniprogram/pages/admin/audit/audit');
   global.Page = (obj) => { statsDef = obj; };
+  // eslint-disable-next-line global-require
   require('../miniprogram/pages/admin/stats/stats');
 });
 
@@ -17,8 +19,12 @@ afterAll(() => {
 });
 
 const logsData = [
-  { _id: '1', userId: 'u1', type: 'labor', minutes: 10, status: 'pending' },
-  { _id: '2', userId: 'u1', type: 'volunteer', minutes: 20, status: 'approved' },
+  {
+    _id: '1', userId: 'u1', type: 'labor', minutes: 10, status: 'pending',
+  },
+  {
+    _id: '2', userId: 'u1', type: 'volunteer', minutes: 20, status: 'approved',
+  },
 ];
 const usersData = { u1: { totalPoints: 0 } };
 
@@ -32,6 +38,7 @@ wx.cloud = {
   }),
   callFunction: jest.fn(async ({ name, data }) => {
     if (name === 'approveLog') {
+      // eslint-disable-next-line no-underscore-dangle
       const log = logsData.find((l) => l._id === data.logId);
       log.status = 'approved';
       const pts = log.type === 'volunteer' ? log.minutes * 2 : log.minutes;
