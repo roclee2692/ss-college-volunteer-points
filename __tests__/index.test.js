@@ -17,6 +17,7 @@ afterAll(() => {
 });
 
 test('index page navigation', async () => {
+
   wx.navigateTo = jest.fn();
 
   const template = fs.readFileSync(
@@ -32,4 +33,7 @@ test('index page navigation', async () => {
   await simulate.sleep(0);
 
   expect(wx.navigateTo).toHaveBeenCalledWith({ url: '/pages/home/home' });
+
+  wx.navigateTo = originalNavigate;
+  global.Page = originalPage;
 });
