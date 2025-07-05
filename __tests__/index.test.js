@@ -9,6 +9,7 @@ let originalPage;
 beforeAll(() => {
   originalPage = global.Page;
   global.Page = (obj) => { def = obj; };
+  global.getApp = () => ({ globalData: {} });
   // eslint-disable-next-line global-require
   require('../miniprogram/pages/index/index');
   global.Page = () => {};
@@ -21,7 +22,7 @@ afterAll(() => {
 });
 
 test('index page navigation', async () => {
-  wx.cloud = { callFunction: jest.fn().mockResolvedValue({}) };
+  wx.cloud = { callFunction: jest.fn().mockResolvedValue({ result: { openid: 'o1' } }) };
   const originalNavigate = wx.navigateTo;
   wx.navigateTo = jest.fn();
 
