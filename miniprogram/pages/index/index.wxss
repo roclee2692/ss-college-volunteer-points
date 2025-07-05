@@ -6,3 +6,10 @@
   font-size: 36rpx;
   margin-bottom: 30rpx;
 }
+
+.start-btn {
+  width: 300rpx;
+  margin: 0 auto;
+  background-color: #07c160;
+  color: #fff;
+}
