@@ -1,3 +1,7 @@
 <view class="container">
-  <text>欢迎使用</text>
+  <van-card>欢迎使用善水书院积分系统</van-card>
+  <view class="btn-wrap">
+    <van-button type="primary" block bindtap="goProfile">个人信息</van-button>
+    <van-button type="info" block bindtap="goLogTime">时长提交</van-button>
+  </view>
 </view>

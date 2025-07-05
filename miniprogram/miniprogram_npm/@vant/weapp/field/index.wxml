@@ -1,0 +1,1 @@
+<input class="van-field" bindinput="emitInput" placeholder="{{placeholder}}" value="{{value}}" />
