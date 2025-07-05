@@ -1,5 +1,5 @@
 const simulate = require('miniprogram-simulate');
-const { LOG_STATUS, LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER } = require('../cloudfunctions/common/constants');
+const { LOG_STATUS, LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER } = require('../miniprogram/common/constants');
 
 let auditDef;
 let statsDef;
