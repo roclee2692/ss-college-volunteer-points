@@ -1,0 +1,7 @@
+<form bindsubmit="handleSubmit">
+  <van-field label="姓名" value="{{name}}" bind:input="onNameChange" placeholder="请输入姓名" />
+  <van-field label="学号" value="{{studentId}}" bind:input="onIdChange" placeholder="请输入学号" />
+  <view class="btn-wrap">
+    <van-button block type="info" formType="submit">保存</van-button>
+  </view>
+</form>
