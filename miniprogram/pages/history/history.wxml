@@ -1,0 +1,9 @@
+<view>
+  <block wx:for="{{logs}}" wx:key="_id">
+    <van-cell
+      title="{{item.type}}"
+      label="{{item.minutes}}\u5206\u949f - {{item.status}} {{item.remark}}"
+    />
+  </block>
+  <van-empty wx:if="{{logs.length===0}}" description="\u6682\u65e0\u8bb0\u5f55" />
+</view>
