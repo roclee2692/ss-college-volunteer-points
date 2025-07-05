@@ -1,0 +1,4 @@
+node_modules/
+miniprogram/wxcharts.js
+miniprogram/miniprogram_npm/
+coverage/
