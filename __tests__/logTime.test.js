@@ -1,5 +1,5 @@
 const simulate = require('miniprogram-simulate');
-const { LOG_TYPES } = require('../cloudfunctions/common/constants');
+const { LOG_TYPES } = require('../miniprogram/common/constants');
 
 let def;
 let originalPage;
