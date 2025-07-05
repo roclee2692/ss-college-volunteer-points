@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/home/home",
-    "pages/log-time/log-time"
+    "pages/log-time/log-time",
+    "pages/admin/audit/audit",
+    "pages/admin/stats/stats"
   ],
   "window": {
     "navigationBarTitleText": "善水书院积分系统"

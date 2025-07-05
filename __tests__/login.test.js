@@ -9,6 +9,7 @@ let originalPage;
 beforeAll(() => {
   originalPage = global.Page;
   global.Page = (obj) => { def = obj; };
+  global.getApp = () => ({ globalData: {} });
   // eslint-disable-next-line global-require
   require('../miniprogram/pages/index/index');
   global.Page = () => {};
@@ -32,7 +33,7 @@ const loadPage = async () => {
 };
 
 test('login success navigation', async () => {
-  wx.cloud = { callFunction: jest.fn().mockResolvedValue({}) };
+  wx.cloud = { callFunction: jest.fn().mockResolvedValue({ result: { openid: 'o1' } }) };
   wx.navigateTo = jest.fn();
 
   const page = await loadPage();
