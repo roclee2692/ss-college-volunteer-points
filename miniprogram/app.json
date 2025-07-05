@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/home/home",
+    "pages/profile/profile",
     "pages/log-time/log-time",
     "pages/admin/audit/audit",
     "pages/admin/stats/stats"

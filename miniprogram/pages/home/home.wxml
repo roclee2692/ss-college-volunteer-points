@@ -1,3 +1,6 @@
 <view class="container">
-  <text>欢迎使用</text>
+  <van-cell-group>
+    <van-cell title="个人信息" is-link bindtap="goProfile" />
+    <van-cell title="时长提交" is-link bindtap="goLogTime" />
+  </van-cell-group>
 </view>
