@@ -3,10 +3,6 @@ const path = require('path');
 const simulate = require('miniprogram-simulate');
 
 test('index page navigation', () => {
-  let def;
-  global.Page = (obj) => { def = obj; };
-  // eslint-disable-next-line global-require
-  require('../miniprogram/pages/index/index');
   wx.navigateTo = jest.fn();
 
   const template = fs.readFileSync(
