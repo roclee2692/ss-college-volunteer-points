@@ -1,4 +1,5 @@
 const cloud = require('wx-server-sdk');
+const { LOG_STATUS } = require('../common/constants');
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 
@@ -15,7 +16,7 @@ exports.main = async (event) => {
       minutes,
       remark,
       createdAt: db.serverDate(),
-      status: 'pending',
+      status: LOG_STATUS.PENDING,
     },
   });
   return { ok: true };

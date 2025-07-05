@@ -1,4 +1,4 @@
-const { ADMIN_OPENIDS } = require('../../../../cloudfunctions/common/constants');
+const { ADMIN_OPENIDS, LOG_STATUS } = require('../../../../cloudfunctions/common/constants');
 
 Page({
   data: { logs: [] },
@@ -9,7 +9,7 @@ Page({
       return;
     }
     const db = wx.cloud.database();
-    const res = await db.collection('Logs').where({ status: 'pending' }).get();
+    const res = await db.collection('Logs').where({ status: LOG_STATUS.PENDING }).get();
     this.setData({ logs: res.data });
   },
   async handleApprove(e) {

@@ -1,4 +1,5 @@
 const simulate = require('miniprogram-simulate');
+const { LOG_STATUS, LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER } = require('../cloudfunctions/common/constants');
 
 let auditDef;
 let statsDef;
@@ -20,10 +21,18 @@ afterAll(() => {
 
 const logsData = [
   {
-    _id: '1', userId: 'u1', type: 'labor', minutes: 10, status: 'pending',
+    _id: '1',
+    userId: 'u1',
+    type: LOG_TYPES.LABOR,
+    minutes: 10,
+    status: LOG_STATUS.PENDING,
   },
   {
-    _id: '2', userId: 'u1', type: 'volunteer', minutes: 20, status: 'approved',
+    _id: '2',
+    userId: 'u1',
+    type: LOG_TYPES.VOLUNTEER,
+    minutes: 20,
+    status: LOG_STATUS.APPROVED,
   },
 ];
 const usersData = { u1: { totalPoints: 0 } };
@@ -32,7 +41,9 @@ wx.cloud = {
   database: () => ({
     collection: () => ({
       where: () => ({
-        get: jest.fn().mockResolvedValue({ data: logsData.filter((l) => l.status === 'pending') }),
+        get: jest.fn().mockResolvedValue({
+          data: logsData.filter((l) => l.status === LOG_STATUS.PENDING),
+        }),
       }),
     }),
   }),
@@ -40,16 +51,19 @@ wx.cloud = {
     if (name === 'approveLog') {
       // eslint-disable-next-line no-underscore-dangle
       const log = logsData.find((l) => l._id === data.logId);
-      log.status = 'approved';
-      const pts = log.type === 'volunteer' ? log.minutes * 2 : log.minutes;
+      log.status = LOG_STATUS.APPROVED;
+      const pts =
+        log.type === LOG_TYPES.VOLUNTEER
+          ? log.minutes * VOLUNTEER_POINTS_MULTIPLIER
+          : log.minutes;
       usersData[log.userId].totalPoints += pts;
       return { result: { ok: true } };
     }
     if (name === 'getStats') {
       let labor = 0;
       let volunteer = 0;
-      logsData.filter((l) => l.status === 'approved').forEach((l) => {
-        if (l.type === 'labor') labor += l.minutes;
+      logsData.filter((l) => l.status === LOG_STATUS.APPROVED).forEach((l) => {
+        if (l.type === LOG_TYPES.LABOR) labor += l.minutes;
         else volunteer += l.minutes;
       });
       return { result: { laborMinutes: labor, volunteerMinutes: volunteer } };
