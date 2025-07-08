@@ -1,5 +1,6 @@
 const simulate = require('miniprogram-simulate');
-const { LOG_TYPES, LOG_STATUS } = require('../miniprogram/common/constants');
+const { LOG_STATUS } = require('../miniprogram/common/constants');
+const { LOG_TYPES } = require('../common/constants');
 
 let def;
 let originalPage;
@@ -22,7 +23,9 @@ wx.cloud = {
       where: () => ({
         get: jest.fn().mockResolvedValue({
           data: [
-            { _id: '1', type: LOG_TYPES.LABOR, minutes: 10, status: LOG_STATUS.APPROVED, remark: 'r1' },
+            {
+              _id: '1', type: LOG_TYPES.LABOR, minutes: 10, status: LOG_STATUS.APPROVED, remark: 'r1',
+            },
           ],
         }),
       }),

@@ -1,5 +1,3 @@
-const { LOG_STATUS } = require('../../common/constants');
-
 Page({
   data: {
     logs: [],

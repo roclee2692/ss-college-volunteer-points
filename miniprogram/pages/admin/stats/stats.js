@@ -1,4 +1,4 @@
-const { ADMIN_OPENIDS } = require('../../../common/constants');
+const { ADMIN_OPENIDS } = require('../../common/constants');
 const wxCharts = require('../../../wxcharts');
 
 Page({

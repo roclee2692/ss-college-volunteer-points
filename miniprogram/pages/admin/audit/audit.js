@@ -1,4 +1,4 @@
-const { ADMIN_OPENIDS, LOG_STATUS } = require('../../../common/constants');
+const { ADMIN_OPENIDS, LOG_STATUS } = require('../../common/constants');
 
 Page({
   data: { logs: [] },
