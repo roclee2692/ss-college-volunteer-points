@@ -1,3 +1,10 @@
-.btn-wrap {
-  margin: 20rpx;
+.container {
+  padding: 40rpx;
+  text-align: center;
+}
+.point {
+  margin-bottom: 20rpx;
+}
+.history-title {
+  margin: 20rpx 0;
 }

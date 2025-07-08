@@ -1,0 +1,4 @@
+[
+  { "id": 1, "name": "笔记本", "points": 50, "stock": 3, "img": "https://example.com/note.jpg" },
+  { "id": 2, "name": "水杯", "points": 80, "stock": 0, "img": "https://example.com/cup.jpg" }
+]
