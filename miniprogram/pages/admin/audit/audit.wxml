@@ -1,8 +1,11 @@
 <view>
-  <block wx:for="{{logs}}" wx:key="_id">
-    <van-cell title="{{item.type}}" label="{{item.minutes}}分钟">
-      <van-button data-id="{{item._id}}" bindtap="handleApprove" type="primary" size="small">通过</van-button>
-    </van-cell>
+  <van-skeleton wx:if="{{loading}}" row="3" />
+  <block wx:if="{{!loading}}">
+    <block wx:for="{{logs}}" wx:key="_id">
+      <van-cell title="{{item.type}}" label="{{item.minutes}}分钟">
+        <van-button data-id="{{item._id}}" bindtap="handleApprove" type="primary" size="small">通过</van-button>
+      </van-cell>
+    </block>
+    <van-empty wx:if="{{logs.length===0}}" description="暂无待审核" />
   </block>
-  <van-empty wx:if="{{logs.length===0}}" description="暂无待审核" />
 </view>

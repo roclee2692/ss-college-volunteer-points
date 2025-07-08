@@ -3,9 +3,10 @@ const { getRewards, mockRedeem } = require('../../utils/mockApi');
 Page({
   data: {
     rewards: [],
+    loading: true,
   },
   onLoad() {
-    this.setData({ rewards: getRewards() });
+    this.setData({ rewards: getRewards(), loading: false });
   },
   handleRedeem(e) {
     const id = Number(e.currentTarget.dataset.id);

@@ -1,13 +1,17 @@
 <view class="container">
   <van-button type="info" bindtap="openAdd">新增奖品</van-button>
-  <block wx:for="{{rewards}}" wx:key="_id" class="card">
-    <van-card
-      thumb="{{item.img}}"
-      title="{{item.name}}"
-      desc="{{item.points}}积分 库存{{item.stock}}"
-      data-id="{{item._id}}"
-      bindtap="handleEdit"
-    />
+  <van-skeleton wx:if="{{loading}}" row="3" />
+  <block wx:if="{{!loading}}">
+    <block wx:for="{{rewards}}" wx:key="_id" class="card">
+      <van-card
+        thumb="{{item.img}}"
+        title="{{item.name}}"
+        desc="{{item.points}}积分 库存{{item.stock}}"
+        data-id="{{item._id}}"
+        bindtap="handleEdit"
+      />
+    </block>
+    <van-empty wx:if="{{rewards.length===0}}" description="暂无奖品" />
   </block>
   <van-dialog
     title="新增奖品"

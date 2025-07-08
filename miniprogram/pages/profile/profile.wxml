@@ -1,8 +1,11 @@
 <view class="container">
-  <view class="point">剩余积分：{{user.totalPoints}}</view>
-  <view class="history-title">兑换记录</view>
-  <block wx:for="{{user.history}}" wx:key="index">
-    <van-cell title="{{item.name}}" label="{{item.points}}分" />
+  <van-skeleton wx:if="{{loading}}" row="3" />
+  <block wx:if="{{!loading}}">
+    <view class="point">剩余积分：{{user.totalPoints}}</view>
+    <view class="history-title">兑换记录</view>
+    <block wx:for="{{user.history}}" wx:key="index">
+      <van-cell title="{{item.name}}" label="{{item.points}}分" />
+    </block>
+    <van-empty wx:if="{{user.history.length===0}}" description="暂无记录" />
   </block>
-  <van-empty wx:if="{{user.history.length===0}}" description="暂无记录" />
 </view>

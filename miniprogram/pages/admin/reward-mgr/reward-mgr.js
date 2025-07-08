@@ -5,6 +5,7 @@ const { addReward } = require('../../../utils/cloudApi');
 Page({
   data: {
     rewards: [],
+    loading: true,
     showAdd: false,
     name: '',
     points: 0,
@@ -16,6 +17,7 @@ Page({
       wx.navigateBack();
       return;
     }
+    this.setData({ loading: true });
     try {
       const db = wx.cloud.database();
       const res = await db.collection('Rewards').get();
@@ -23,6 +25,7 @@ Page({
     } catch (e) {
       // ignore
     }
+    this.setData({ loading: false });
   },
   openAdd() {
     this.setData({
