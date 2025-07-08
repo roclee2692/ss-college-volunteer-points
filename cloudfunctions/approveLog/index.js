@@ -1,5 +1,7 @@
 const cloud = require('wx-server-sdk');
-const { ADMIN_OPENIDS, LOG_STATUS, LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER } = require('../common/constants');
+const {
+  ADMIN_OPENIDS, LOG_STATUS, LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER,
+} = require('../common/constants');
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 
@@ -20,10 +22,9 @@ exports.main = async (event) => {
     return { ok: false };
   }
   await logs.doc(logId).update({ data: { status: LOG_STATUS.APPROVED } });
-  const points =
-    log.type === LOG_TYPES.VOLUNTEER
-      ? log.minutes * VOLUNTEER_POINTS_MULTIPLIER
-      : log.minutes;
+  const points = log.type === LOG_TYPES.VOLUNTEER
+    ? log.minutes * VOLUNTEER_POINTS_MULTIPLIER
+    : log.minutes;
   await users.doc(log.userId).update({ data: { totalPoints: _.inc(points) } });
   return { ok: true, points };
 };

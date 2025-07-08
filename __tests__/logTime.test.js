@@ -1,5 +1,5 @@
 const simulate = require('miniprogram-simulate');
-const { LOG_TYPES } = require('../miniprogram/common/constants');
+const { LOG_TYPES } = require('../common/constants');
 
 let def;
 let originalPage;

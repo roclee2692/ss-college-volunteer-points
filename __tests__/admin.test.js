@@ -1,5 +1,6 @@
 const simulate = require('miniprogram-simulate');
-const { LOG_STATUS, LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER } = require('../miniprogram/common/constants');
+const { LOG_STATUS } = require('../miniprogram/common/constants');
+const { LOG_TYPES, VOLUNTEER_POINTS_MULTIPLIER } = require('../common/constants');
 
 let auditDef;
 let statsDef;
@@ -52,10 +53,9 @@ wx.cloud = {
       // eslint-disable-next-line no-underscore-dangle
       const log = logsData.find((l) => l._id === data.logId);
       log.status = LOG_STATUS.APPROVED;
-      const pts =
-        log.type === LOG_TYPES.VOLUNTEER
-          ? log.minutes * VOLUNTEER_POINTS_MULTIPLIER
-          : log.minutes;
+      const pts = log.type === LOG_TYPES.VOLUNTEER
+        ? log.minutes * VOLUNTEER_POINTS_MULTIPLIER
+        : log.minutes;
       usersData[log.userId].totalPoints += pts;
       return { result: { ok: true } };
     }
