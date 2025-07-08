@@ -5,6 +5,7 @@ const exparser = require('miniprogram-exparser');
 
 let def;
 let originalPage;
+let logSpy;
 
 beforeAll(() => {
   originalPage = global.Page;
@@ -22,6 +23,7 @@ afterAll(() => {
 });
 
 test('index page navigation', async () => {
+  logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
   wx.cloud = { callFunction: jest.fn().mockResolvedValue({ result: { openid: 'o1' } }) };
   const originalNavigate = wx.navigateTo;
   wx.navigateTo = jest.fn();
@@ -39,7 +41,10 @@ test('index page navigation', async () => {
   exparser.triggerEvent(button.__wxElement, 'tap');
   await simulate.sleep(0);
 
+  expect(console.log).toHaveBeenCalledWith(expect.stringContaining('[tap]'), expect.any(Number));
+
   expect(wx.navigateTo).toHaveBeenCalledWith({ url: '/pages/home/home' });
 
   wx.navigateTo = originalNavigate;
+  logSpy.mockRestore();
 });

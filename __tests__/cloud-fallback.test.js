@@ -32,21 +32,7 @@ const loadPage = async () => {
   return page;
 };
 
-test('login success navigation', async () => {
-  wx.cloud = { callFunction: jest.fn().mockResolvedValue({ result: { openid: 'o1' } }) };
-  wx.navigateTo = jest.fn();
-
-  const page = await loadPage();
-  const button = page.dom.querySelector('wx-button');
-  // eslint-disable-next-line no-underscore-dangle
-  exparser.triggerEvent(button.__wxElement, 'tap');
-  await simulate.sleep(0);
-
-  expect(wx.cloud.callFunction).toHaveBeenCalledWith({ name: 'login' });
-  expect(wx.navigateTo).toHaveBeenCalledWith({ url: '/pages/home/home' });
-});
-
-test('login failure still navigates', async () => {
+test('navigate even on login failure', async () => {
   wx.cloud = { callFunction: jest.fn().mockRejectedValue(new Error('fail')) };
   wx.navigateTo = jest.fn();
 
