@@ -7,6 +7,8 @@
     "pages/log-time/log-time",
     "pages/admin/audit/audit",
     "pages/admin/stats/stats",
+    "pages/admin/reward-mgr/reward-mgr",
+    "pages/admin/edit-reward/edit-reward",
     "pages/history/history"
   ],
   "window": {
