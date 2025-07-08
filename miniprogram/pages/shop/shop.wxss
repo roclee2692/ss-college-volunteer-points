@@ -1,0 +1,7 @@
+.container {
+  padding: 40rpx;
+  text-align: center;
+}
+.card + .card {
+  margin-top: 20rpx;
+}

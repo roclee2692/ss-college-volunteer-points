@@ -1,16 +1,10 @@
+const { getUser } = require('../../utils/mockApi');
+
 Page({
   data: {
-    name: '',
-    studentId: '',
+    user: null,
   },
-  onNameChange(e) {
-    this.setData({ name: e.detail });
-  },
-  onIdChange(e) {
-    this.setData({ studentId: e.detail });
-  },
-  handleSubmit() {
-    wx.showToast({ title: '保存成功', icon: 'success' });
-    wx.navigateBack();
+  onShow() {
+    this.setData({ user: getUser() });
   },
 });
