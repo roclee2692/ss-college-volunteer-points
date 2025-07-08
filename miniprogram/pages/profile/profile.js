@@ -1,10 +1,11 @@
-const { getUser } = require('../../utils/mockApi');
+const { getUserInfo } = require('../../utils/cloudApi');
 
 Page({
   data: {
     user: null,
   },
-  onShow() {
-    this.setData({ user: getUser() });
+  async onShow() {
+    const user = await getUserInfo();
+    this.setData({ user });
   },
 });

@@ -1,18 +1,22 @@
-const { getRewards, mockRedeem } = require('../../utils/mockApi');
+const { getRewards, redeem } = require('../../utils/cloudApi');
 
 Page({
   data: {
     rewards: [],
   },
-  onLoad() {
-    this.setData({ rewards: getRewards() });
+  async onLoad() {
+    const rewards = await getRewards();
+    this.setData({ rewards });
   },
-  handleRedeem(e) {
+  async handleRedeem(e) {
     const id = Number(e.currentTarget.dataset.id);
-    const ok = mockRedeem(id);
-    if (ok) {
-      this.setData({ rewards: getRewards() });
+    const res = await redeem(id);
+    if (res.ok) {
+      const rewards = await getRewards();
+      this.setData({ rewards });
       wx.showToast({ title: '兑换成功' });
+    } else if (res.msg) {
+      wx.showToast({ title: res.msg, icon: 'none' });
     }
   },
 });
