@@ -1,0 +1,8 @@
+.container {
+  padding: 40rpx;
+}
+.img {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 20rpx;
+}

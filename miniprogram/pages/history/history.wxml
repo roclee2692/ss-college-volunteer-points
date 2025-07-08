@@ -1,9 +1,12 @@
 <view>
-  <block wx:for="{{logs}}" wx:key="_id">
-    <van-cell
-      title="{{item.type}}"
-      label="{{item.minutes}}\u5206\u949f - {{item.status}} {{item.remark}}"
-    />
+  <van-skeleton wx:if="{{loading}}" row="3" />
+  <block wx:if="{{!loading}}">
+    <block wx:for="{{logs}}" wx:key="_id">
+      <van-cell
+        title="{{item.type}}"
+        label="{{item.minutes}}分钟 - {{item.status}} {{item.remark}}"
+      />
+    </block>
+    <van-empty wx:if="{{logs.length===0}}" description="暂无记录" />
   </block>
-  <van-empty wx:if="{{logs.length===0}}" description="\u6682\u65e0\u8bb0\u5f55" />
 </view>

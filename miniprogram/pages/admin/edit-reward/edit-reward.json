@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "编辑奖品",
+  "usingComponents": {
+    "van-field": "../../../miniprogram_npm/@vant/weapp/field/index",
+    "van-button": "../../../miniprogram_npm/@vant/weapp/button/index",
+    "van-dialog": "../../../miniprogram_npm/@vant/weapp/dialog/index"
+  }
+}

@@ -1,8 +1,7 @@
 <view class="container">
-
-  <van-card>欢迎使用善水书院积分系统</van-card>
+  <van-card title="我的积分" desc="{{totalPoints}} 分"></van-card>
   <view class="btn-wrap">
-    <van-button type="primary" block bindtap="goProfile">个人信息</van-button>
-    <van-button type="info" block bindtap="goLogTime">时长提交</van-button>
+    <van-button type="primary" block bindtap="goSubmit">去提交</van-button>
+    <van-button type="info" block bindtap="goRedeem">去兑换</van-button>
   </view>
 </view>

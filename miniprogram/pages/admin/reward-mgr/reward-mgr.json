@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "奖品管理",
+  "usingComponents": {
+    "van-button": "../../../miniprogram_npm/@vant/weapp/button/index",
+    "van-card": "../../../miniprogram_npm/@vant/weapp/card/index",
+    "van-dialog": "../../../miniprogram_npm/@vant/weapp/dialog/index",
+    "van-field": "../../../miniprogram_npm/@vant/weapp/field/index",
+    "van-empty": "../../../miniprogram_npm/@vant/weapp/empty/index",
+    "van-skeleton": "../../../miniprogram_npm/@vant/weapp/skeleton/index"
+  }
+}

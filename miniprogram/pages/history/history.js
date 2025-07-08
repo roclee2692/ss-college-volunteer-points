@@ -1,8 +1,10 @@
 Page({
   data: {
     logs: [],
+    loading: true,
   },
   async onShow() {
+    this.setData({ loading: true });
     try {
       const db = wx.cloud.database();
       const { openid } = getApp().globalData;
@@ -14,5 +16,6 @@ Page({
     } catch (e) {
       // ignore fetch failure
     }
+    this.setData({ loading: false });
   },
 });
