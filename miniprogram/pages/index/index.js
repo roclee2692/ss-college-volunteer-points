@@ -2,13 +2,13 @@ const app = getApp();
 
 Page({
   async handleStart() {
-    console.log("[tap]", Date.now());
+    console.log('[tap]', Date.now());
+    wx.navigateTo({ url: '/pages/home/home' });
     try {
       const res = await wx.cloud.callFunction({ name: 'login' });
       app.globalData.openid = res.result.openid;
-      wx.navigateTo({ url: '/pages/home/home' });
     } catch (e) {
-      // ignore login failure
+      console.error(e);
     }
   },
 });
